@@ -14,6 +14,7 @@ Source1:	cheops-agent.bz2
 Patch1:		%{name}-errno.patch.bz2
 #Patch2:		%{name}-0.1.12-gcc3.3-fix.patch.bz2
 URL:		http://cheops-ng.sourceforge.net/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+-devel = 1.2.10 bison flex gnome-libs-devel ORBit-devel = 0.5.17
 BuildRequires:	glib-devel = 1.2.10 libxml-devel xpm-devel nmap imlib-devel = 1.9.14
 Requires:	nmap
