@@ -16,7 +16,7 @@ Patch1:		%{name}-errno.patch.bz2
 URL:		http://cheops-ng.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+-devel = 1.2.10 bison flex gnome-libs-devel ORBit-devel = 0.5.17
-BuildRequires:	glib-devel = 1.2.10 libxml-devel xpm-devel nmap imlib-devel = 1.9.14
+BuildRequires:	glib-devel = 1.2.10 libxml-devel xpm-devel nmap imlib-devel => 1.9.14
 Requires:	nmap
 Requires(post):	rpm-helper
 Requires(preun): rpm-helper
