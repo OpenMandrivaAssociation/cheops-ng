@@ -64,19 +64,20 @@ cp cheops-agent %{buildroot}/%{_bindir}
 bzcat %{SOURCE1} > %{buildroot}%{_initrddir}/cheops-agent
 
 # Menu
-mkdir -p %{buildroot}/%{_menudir}
-cat > %{buildroot}/%{_menudir}/%{name} <<EOF
-?package(%{name}): command="%{_bindir}/%{name}" \
-		   needs="X11" \
-		   icon="networking_section.png" \
-		   section="Networking/Other" \
-		   title="Cheops-NG" \
-		   longtitle="Network Browser and Tools (requires running agent)"
 #?package(%{name}): needs="x11" \
 #		    section="Documentation/Websites" \
 #		    title="Cheops-NG Homepage" \
 #		    command="if ps U \$USER | grep -q \$BROWSER; then \$BROWSER -remote \'openURL(%{url})\'; else \$BROWSER \'%{url}\'; fi" \
 #		    icon="networking_section.png"
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+[Desktop Entry]
+Type=Application
+Exec=%{_bindir}/%{name}
+Icon=networking_section
+Categories=Network;
+Name=Cheops-NG
+Comment=Network Browser and Tools (requires running agent)
 EOF
 
 %clean
@@ -99,5 +100,5 @@ rm -rf %{buildroot}
 %attr(755,root,root) %config(noreplace) %{_initrddir}/cheops-agent
 #%{_datadir}/pixmaps/*.xpm
 %{_datadir}/pixmaps/%{name}
-%{_menudir}/%{name}
+%{_datadir}/applications/mandriva-%{name}.desktop
 
