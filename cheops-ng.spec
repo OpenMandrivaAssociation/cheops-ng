@@ -22,10 +22,10 @@ Requires(post):	rpm-helper
 Requires(preun): rpm-helper
 
 %description
-Cheops-ng is a Network management tool for mapping and monitoring your network. 
+Cheops-ng is a Network management tool for mapping and monitoring your network.
 It has host/network discovery functionality as well as OS detection of hosts. 
-Cheops-ng has the ability to probe hosts to see what services they are running. 
-On some services, cheops-ng is actually able to see what program is running for 
+Cheops-ng has the ability to probe hosts to see what services they are running.
+On some services, cheops-ng is actually able to see what program is running for
 a service and the version number of that program.
 
 NB: Run cheops-agent as root to enable the backend.
