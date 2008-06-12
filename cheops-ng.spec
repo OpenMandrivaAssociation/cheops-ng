@@ -84,14 +84,18 @@ EOF
 rm -rf %{buildroot}
 
 %post
+%if %mdkversion < 200900
 %{update_menus}
+%endif
 %_post_service cheops-agent
 
 %preun
 %_preun_service cheops-agent
 
+%if %mdkversion < 200900
 %postun
 %{clean_menus}
+%endif
 
 %files
 %defattr(-,root,root)
