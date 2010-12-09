@@ -1,6 +1,6 @@
 %define name 	cheops-ng
 %define version 0.2.3
-%define release %mkrel 5
+%define release %mkrel 6
 
 Summary:	Multipurpose network exploration tool
 Name:		%{name}
