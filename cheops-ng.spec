@@ -12,7 +12,7 @@ Source0:	%{name}-%{version}.tar.bz2
 Source1:	cheops-agent.bz2
 #Patch0:		%{name}-0.1.10-Makefile.in-patch.bz2
 Patch1:		%{name}-errno.patch.bz2
-#Patch2:		%{name}-0.1.12-gcc3.3-fix.patch.bz2
+Patch2:		cheops-ng-0.2.3-use-size_t-for-storing-pointer.patch
 URL:		http://cheops-ng.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+-devel = 1.2.10 bison flex gnome-libs-devel ORBit-devel = 0.5.17
@@ -35,7 +35,7 @@ NB: Run cheops-agent as root to enable the backend.
 
 #%patch0 -p0
 %patch1 -p1
-#%patch2 -p1 -b .orig
+%patch2 -p1 -b .64bit~
 
 %build
 
