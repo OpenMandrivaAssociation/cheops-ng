@@ -6,7 +6,6 @@ License:	GPLv2+
 Group:		Networking/Other
 Source0:	%{name}-%{version}.tar.bz2
 Source1:	cheops-agent
-Source2:        sysconfig.cheops-agent
 Patch0:		cheops-ng-0.2.3-ditch-in_addr_deepstruct.patch
 Patch1:		cheops-ng-errno.patch
 Patch2:		cheops-ng-0.2.3-ldflags.patch
@@ -23,7 +22,6 @@ Patch18:         cheops-ng-destdir.patch
 Patch19:         cheops-ng-fix_desktop_file.patch
 
 URL:		http://cheops-ng.sourceforge.net/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+-devel = 1.2.10 bison flex gnome-libs-devel ORBit-devel = 0.5.17
 BuildRequires:	glib-devel = 1.2.10 libxml-devel xpm-devel nmap imlib-devel => 1.9.14
 Requires:	nmap
