@@ -1,18 +1,14 @@
-%define name 	cheops-ng
-%define version 0.2.3
-%define release %mkrel 6
-
 Summary:	Multipurpose network exploration tool
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-License:	GPL
+Name:		cheops-ng
+Version:	0.2.3
+Release:	7
+License:	GPLv2+
 Group:		Networking/Other
 Source0:	%{name}-%{version}.tar.bz2
-Source1:	cheops-agent.bz2
+Source1:	cheops-agent
 Source2:        sysconfig.cheops-agent
 Patch0:		cheops-ng-0.2.3-ditch-in_addr_deepstruct.patch
-Patch1:		%{name}-errno.patch.bz2
+Patch1:		cheops-ng-errno.patch
 Patch2:		cheops-ng-0.2.3-ldflags.patch
 
 # openSuSE patches
@@ -73,21 +69,9 @@ cp %{_datadir}/automake-`automake --version|head -n1|cut -d\  -f4|cut -d. -f-2`/
 make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-# makeinstall macro does not work
-DEFAULTDIR="%{_datadir}/pixmaps/%{name}"
+%makeinstall_std
 
-mkdir -p %{buildroot}/%{_bindir}
-mkdir -p %{buildroot}/%{_initrddir}
-mkdir -p %{buildroot}/${DEFAULTDIR}/pixmaps/
-
-cp pixmaps/%{name}.xpm %{buildroot}/%{_datadir}/pixmaps/%name/pixmaps/
-cp pixmaps/*.xpm %{buildroot}/${DEFAULTDIR}/pixmaps/
-
-cp %{name} %{buildroot}/%{_bindir}
-cp cheops-agent %{buildroot}/%{_bindir}
-
-bzcat %{SOURCE1} > %{buildroot}%{_initrddir}/cheops-agent
+install -m755 %{SOURCE1} -D %{buildroot}%{_initrddir}/cheops-agent
 
 # Menu
 #?package(%{name}): needs="x11" \
@@ -106,29 +90,14 @@ Name=Cheops-NG
 Comment=Network Browser and Tools (requires running agent)
 EOF
 
-%clean
-rm -rf %{buildroot}
-
-%post
-%if %mdkversion < 200900
-%{update_menus}
-%endif
-%_post_service cheops-agent
-
-%preun
-%_preun_service cheops-agent
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%endif
-
 %files
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog README doc/*
-%{_bindir}/cheops-*
+%{_bindir}/cheops-ng
+%{_sbindir}/cheops-agent
 %attr(755,root,root) %config(noreplace) %{_initrddir}/cheops-agent
-#%{_datadir}/pixmaps/*.xpm
-%{_datadir}/pixmaps/%{name}
+%dir %{_datadir}/cheops-ng
+%dir %{_datadir}/cheops-ng/pixmaps
+%{_datadir}/cheops-ng/pixmaps/*.xpm
+%{_datadir}/pixmaps/cheops-ng.xpm
 %{_datadir}/applications/mandriva-%{name}.desktop
-
+%{_datadir}/gnome/apps/Internet/cheops-ng.desktop
