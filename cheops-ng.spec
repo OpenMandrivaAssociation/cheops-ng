@@ -13,6 +13,7 @@ Source1:	cheops-agent.bz2
 Source2:        sysconfig.cheops-agent
 Patch0:		cheops-ng-0.2.3-ditch-in_addr_deepstruct.patch
 Patch1:		%{name}-errno.patch.bz2
+Patch2:		cheops-ng-0.2.3-ldflags.patch
 
 # openSuSE patches
 Patch11:         cheops-ng-missing_autoheader_templates.patch
@@ -45,7 +46,6 @@ NB: Run cheops-agent as root to enable the backend.
 %prep
 %setup -q
 
-#%patch0 -p0
 %patch1 -p1
 %patch11 -p0 -b .template~
 %patch12 -p0
@@ -58,6 +58,8 @@ NB: Run cheops-agent as root to enable the backend.
 %patch19 -p0
 
 %patch0 -p1
+%patch2 -p1 -b .ldflags~
+
 rm -f Makefile
 aclocal -I m4
 autoheader -I m4
