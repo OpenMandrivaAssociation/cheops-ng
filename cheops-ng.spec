@@ -10,9 +10,21 @@ License:	GPL
 Group:		Networking/Other
 Source0:	%{name}-%{version}.tar.bz2
 Source1:	cheops-agent.bz2
-#Patch0:		%{name}-0.1.10-Makefile.in-patch.bz2
+Source2:        sysconfig.cheops-agent
+Patch0:		cheops-ng-0.2.3-ditch-in_addr_deepstruct.patch
 Patch1:		%{name}-errno.patch.bz2
-Patch2:		cheops-ng-0.2.3-use-size_t-for-storing-pointer.patch
+
+# openSuSE patches
+Patch11:         cheops-ng-missing_autoheader_templates.patch
+Patch12:         cheops-ng-modernize_configure.patch
+Patch13:         cheops-ng-use_external_libadns.patch
+Patch14:         cheops-ng-rename_clog.patch
+Patch15:         cheops-ng-pointer_int_casts.patch
+Patch16:         cheops-ng-codecleanup.patch
+Patch17:         cheops-ng-off_by_one.patch
+Patch18:         cheops-ng-destdir.patch
+Patch19:         cheops-ng-fix_desktop_file.patch
+
 URL:		http://cheops-ng.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+-devel = 1.2.10 bison flex gnome-libs-devel ORBit-devel = 0.5.17
@@ -35,16 +47,28 @@ NB: Run cheops-agent as root to enable the backend.
 
 #%patch0 -p0
 %patch1 -p1
-%patch2 -p1 -b .64bit~
+%patch11 -p0 -b .template~
+%patch12 -p0
+%patch13 -p0
+%patch14 -p0
+%patch15 -p0
+%patch16 -p0
+%patch17 -p0
+%patch18 -p0
+%patch19 -p0
+
+%patch0 -p1
+rm -f Makefile
+aclocal -I m4
+autoheader -I m4
+autoconf -I m4
+# grf, too incompetent to fix automake mess properly...
+cp %{_datadir}/automake-`automake --version|head -n1|cut -d\  -f4|cut -d. -f-2`/config.sub .
 
 %build
-
-# configure macro does not work
-CFLAGS="%{optflags}" \
-./configure	--prefix=%{_prefix} \
-		--host=%{_target_platform} \
+%configure2_5x
 # make -j2 does not work
-make XCFLAGS="$RPM_OPT_FLAGS"
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
