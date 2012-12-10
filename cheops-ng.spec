@@ -100,3 +100,79 @@ EOF
 %{_datadir}/pixmaps/cheops-ng.xpm
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_datadir}/gnome/apps/Internet/cheops-ng.desktop
+
+
+%changelog
+* Wed May 25 2011 Per Ã˜yvind Karlsen <peroyvind@mandriva.org> 0.2.3-7
++ Revision: 679104
+- add 'adns-devel' to buildrequires
+- cleanups
+- fix passing of ldflags
+- sync all suse patches
+- try workaround remaining autofoo mess
+- use %%configure2_5x macro
+- use size_t for storing pointer, fitting 64 bit into 32 bit gets a bit too tight
+
+* Thu Dec 09 2010 Oden Eriksson <oeriksson@mandriva.com> 0.2.3-6mdv2011.0
++ Revision: 617010
+- the mass rebuild of 2010.0 packages
+
+* Wed Sep 02 2009 Thierry Vignaud <tv@mandriva.org> 0.2.3-5mdv2010.0
++ Revision: 424831
+- rebuild
+
+* Wed Jul 23 2008 Thierry Vignaud <tv@mandriva.org> 0.2.3-4mdv2009.0
++ Revision: 243877
+- rebuild
+- fix description-line-too-long
+
+  + Pixel <pixel@mandriva.com>
+    - rpm filetriggers deprecates update_menus/update_scrollkeeper/update_mime_database/update_icon_cache/update_desktop_database/post_install_gconf_schemas
+
+* Thu Jan 03 2008 Thierry Vignaud <tv@mandriva.org> 0.2.3-2mdv2008.1
++ Revision: 141868
+- auto-convert XDG menu entry
+- relax BR on imlib-devel
+- kill re-definition of %%buildroot on Pixel's request
+- import cheops-ng
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+
+* Sat May 13 2006 Emmanuel Andry <eandry@mandriva.org> 0.2.3-2mdk
+- Rebuild for ssl 0.9.8
+
+* Fri Oct 21 2005 Nicolas Lécureuil <neoclust@mandriva.org> 0.2.3-1mdk
+- New release 0.2.3
+- %%mkrel
+- Remove patch 0, 2
+
+* Sun Dec 14 2003 Per Øyvind Karlsen <peroyvind@linux-mandrake.com> 0.1.12-1mdk
+- 0.1.12
+- spec cosmetics
+- fix buildrequires (lib64..)
+- remove explicit library dependency
+- rm -rf $RPM_BUILD_ROOT in %%install, not %%prep
+- quiet setup
+- fix gcc-3.3 build for the gpl.c file that gets generated (P2)
+- pass --host=%%{_target_platform} to configure
+- compile adns with $RPM_OPT_FLAGS
+- make package --short-circuitable (don't move files in builddir around)
+
+* Tue Feb 11 2003 Lenny Cartier <lenny@mandrakesoft.com> 0.1.10-3mdk
+- patch1: fix missing include
+- change group & menu section (Maxim Heijndijk <cchq@wanadoo.nl>)
+
+* Wed Nov 20 2002 Lenny Cartier <lenny@mandrakesoft.com> 0.1.10-2mdk
+- fix pixmaps location
+
+* Thu Nov 14 2002 Lenny Cartier <lenny@mandrakesoft.com> 0.1.10-1mdk
+- from Maxim Heijndijk <cchq@wanadoo.nl> :
+	- Rebuilt on LM 9.0.
+	- 0.1.10.
+	- Added initscript.
+	- Patch for pixmapdir.
+
+* Mon Aug 26 2002 Austin Acton <aacton@yorku.ca> 0.1.9-1mdk
+- Initial package for Mandrake 8.2+
