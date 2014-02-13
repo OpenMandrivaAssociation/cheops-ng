@@ -35,8 +35,8 @@
 +	$(INSTALL) -d $(DESTDIR)$(datadir)/pixmaps
 +	$(INSTALL) -m 644 pixmaps/*.xpm $(DESTDIR)$(DEFAULT_PATH)/pixmaps
 +	$(INSTALL) -m 644 pixmaps/cheops-ng.xpm $(DESTDIR)$(datadir)/pixmaps
-+	$(INSTALL) -s -m 755 cheops-agent $(DESTDIR)$(sbindir)
-+	$(INSTALL) -s -m 755 cheops-ng $(DESTDIR)$(bindir)
++	$(INSTALL) -m 755 cheops-agent $(DESTDIR)$(sbindir)
++	$(INSTALL) -m 755 cheops-ng $(DESTDIR)$(bindir)
 +	$(INSTALL) -d $(DESTDIR)$(datadir)/gnome/apps/Internet
 +	$(INSTALL) -m 644 cheops-ng.desktop $(DESTDIR)$(datadir)/gnome/apps/Internet
  else
