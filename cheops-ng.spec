@@ -1,7 +1,7 @@
 Summary:	Multipurpose network exploration tool
 Name:		cheops-ng
 Version:	0.2.3
-Release:	8
+Release:	9
 License:	GPLv2+
 Group:		Networking/Other
 Url:		http://cheops-ng.sourceforge.net/
