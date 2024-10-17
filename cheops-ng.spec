@@ -4,7 +4,7 @@ Version:	0.2.3
 Release:	9
 License:	GPLv2+
 Group:		Networking/Other
-Url:		http://cheops-ng.sourceforge.net/
+Url:		https://cheops-ng.sourceforge.net/
 Source0:	%{name}-%{version}.tar.bz2
 Source1:	cheops-agent
 Patch0:		cheops-ng-0.2.3-ditch-in_addr_deepstruct.patch
